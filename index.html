@@ -1,0 +1,3220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LoveBites Café - Where Love Meets Flavor</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Global Styles */
+        :root {
+            --primary: #ff4d6d;
+            --secondary: #ff8fa3;
+            --accent: #ffb3c1;
+            --dark: #2b2d42;
+            --light: #fff0f3;
+            --neon-pink: #ff10f0;
+            --neon-blue: #00f5ff;
+            --shadow: 0 4px 20px rgba(255, 77, 109, 0.3);
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="1" fill="%23ffb3c1" opacity="0.5"/></svg>');
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--dark), var(--primary));
+            color: white;
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        header.scrolled {
+            padding: 0.5rem 2rem;
+            background: rgba(43, 45, 66, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 15px;
+            position: relative;
+            overflow: hidden;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 77, 109, 0.7); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(255, 77, 109, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 77, 109, 0); }
+        }
+
+        .logo-icon::before {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: white;
+            clip-path: path('M20,30 Q30,10 40,30 Q50,50 30,50 Q10,50 20,30 Z');
+            transform: rotate(-10deg);
+        }
+
+        .logo-icon::after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: white;
+            clip-path: path('M20,30 Q30,10 40,30 Q50,50 30,50 Q10,50 20,30 Z');
+            transform: rotate(10deg) scaleX(-1);
+            left: 10px;
+        }
+
+        .logo-text {
+            font-family: 'Pacifico', cursive;
+            font-size: 1.8rem;
+            background: linear-gradient(to right, var(--neon-pink), var(--neon-blue));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 10px rgba(255, 16, 240, 0.3);
+            position: relative;
+        }
+
+        .logo-text::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to right, var(--neon-pink), var(--neon-blue));
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.5s ease;
+        }
+
+        .logo:hover .logo-text::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 2rem;
+            position: relative;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+        }
+
+        nav ul li a i {
+            margin-right: 8px;
+            font-size: 1.1rem;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: var(--transition);
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        .nav-buttons {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-left: 1rem;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(255, 77, 109, 0.4);
+        }
+
+        .nav-button i {
+            margin-right: 8px;
+        }
+
+        .nav-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(255, 77, 109, 0.6);
+        }
+
+        .nav-button:active {
+            transform: translateY(1px);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 0 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, transparent 0%, rgba(0, 0, 0, 0.7) 100%);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            z-index: 1;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: fadeInUp 1s forwards 0.5s;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            font-family: 'Pacifico', cursive;
+            text-shadow: 0 0 20px rgba(255, 77, 109, 0.8);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 77, 109, 0.5);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(255, 77, 109, 0.7);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .btn i {
+            margin-right: 8px;
+        }
+
+        .floating-hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--primary);
+            transform: rotate(45deg);
+            opacity: 0;
+            animation: float 10s linear infinite;
+        }
+
+        .heart::before, .heart::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--primary);
+            border-radius: 50%;
+        }
+
+        .heart::before {
+            top: -10px;
+            left: 0;
+        }
+
+        .heart::after {
+            top: 0;
+            left: -10px;
+        }
+
+        @keyframes float {
+            0% {
+                transform: rotate(45deg) translateY(0) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: rotate(45deg) translateY(-100vh) translateX(100px);
+                opacity: 0;
+            }
+        }
+
+        /* About Section */
+        .about {
+            padding: 5rem 2rem;
+            background: white;
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            display: inline-block;
+            position: relative;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--neon-pink), var(--neon-blue));
+            border-radius: 2px;
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 3rem;
+        }
+
+        .about-text {
+            flex: 1;
+            padding-right: 2rem;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .about-image {
+            flex: 1;
+            position: relative;
+            min-height: 400px;
+        }
+
+        .about-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            transform: perspective(1000px) rotateY(-15deg);
+            transition: var(--transition);
+        }
+
+        .about-img:hover {
+            transform: perspective(1000px) rotateY(0deg);
+        }
+
+        .about-badge {
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            background: var(--primary);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 10px;
+            font-weight: 600;
+            box-shadow: var(--shadow);
+            transform: rotate(5deg);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: rotate(5deg) translateY(0); }
+            50% { transform: rotate(5deg) translateY(-10px); }
+        }
+
+        /* Menu Section */
+        .menu {
+            padding: 5rem 2rem;
+            background: var(--light);
+            position: relative;
+        }
+
+        .menu-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .menu-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .menu-tab {
+            padding: 0.8rem 1.5rem;
+            margin: 0 0.5rem;
+            background: transparent;
+            border: none;
+            border-bottom: 3px solid transparent;
+            font-weight: 600;
+            color: var(--dark);
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .menu-tab.active {
+            color: var(--primary);
+            border-bottom: 3px solid var(--primary);
+        }
+
+        .menu-tab::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+
+        .menu-tab:hover::after {
+            width: 100%;
+        }
+
+        .menu-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .menu-item {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+            position: relative;
+            transform: translateY(20px);
+            opacity: 0;
+        }
+
+        .menu-item.animate {
+            animation: fadeInUp 0.5s forwards;
+        }
+
+        .menu-item:nth-child(1) { animation-delay: 0.1s; }
+        .menu-item:nth-child(2) { animation-delay: 0.2s; }
+        .menu-item:nth-child(3) { animation-delay: 0.3s; }
+        .menu-item:nth-child(4) { animation-delay: 0.4s; }
+        .menu-item:nth-child(5) { animation-delay: 0.5s; }
+        .menu-item:nth-child(6) { animation-delay: 0.6s; }
+
+        .menu-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .menu-item-img {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .menu-item:hover .menu-item-img {
+            transform: scale(1.05);
+        }
+
+        .menu-item-content {
+            padding: 1.5rem;
+        }
+
+        .menu-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .menu-item-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .menu-item-price {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .menu-item-desc {
+            color: #666;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .menu-item-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .menu-item-love {
+            background: none;
+            border: none;
+            color: #ccc;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .menu-item-love:hover {
+            color: var(--primary);
+            transform: scale(1.2);
+        }
+
+        .menu-item-love.active {
+            color: var(--primary);
+        }
+
+        .menu-item-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+        }
+
+        .menu-item-btn i {
+            margin-right: 5px;
+        }
+
+        .menu-item-btn:hover {
+            background: var(--dark);
+            transform: translateY(-2px);
+        }
+
+        .menu-item-note {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--primary);
+            color: white;
+            padding: 0.3rem 0.6rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            box-shadow: 0 2px 10px rgba(255, 77, 109, 0.5);
+            animation: pulse 2s infinite;
+        }
+
+        /* Specials Section */
+        .specials {
+            padding: 5rem 2rem;
+            background: white;
+            position: relative;
+        }
+
+        .specials-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .couple-special {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 15px;
+            padding: 2rem;
+            color: white;
+            display: flex;
+            align-items: center;
+            margin-bottom: 3rem;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .couple-special::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            transform: rotate(30deg);
+            animation: shine 5s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: rotate(30deg) translate(-30%, -30%); }
+            100% { transform: rotate(30deg) translate(30%, 30%); }
+        }
+
+        .couple-special-content {
+            flex: 2;
+            padding-right: 2rem;
+            z-index: 1;
+        }
+
+        .couple-special-image {
+            flex: 1;
+            z-index: 1;
+        }
+
+        .couple-special h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            font-family: 'Pacifico', cursive;
+        }
+
+        .couple-special p {
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .couple-special-price {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .couple-special-btn {
+            background: white;
+            color: var(--primary);
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .couple-special-btn i {
+            margin-right: 8px;
+        }
+
+        .couple-special-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .couple-special-img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+        }
+
+        .couple-special-img:hover {
+            transform: rotate(-5deg);
+        }
+
+        .love-meter {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .love-meter h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .love-meter p {
+            margin-bottom: 1.5rem;
+            color: #666;
+        }
+
+        .meter-container {
+            width: 100%;
+            height: 20px;
+            background: #f0f0f0;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .meter-fill {
+            height: 100%;
+            width: 0;
+            background: linear-gradient(to right, var(--neon-pink), var(--neon-blue));
+            border-radius: 10px;
+            transition: width 1s ease;
+        }
+
+        .meter-result {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .meter-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .meter-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 77, 109, 0.4);
+        }
+
+        /* Reservation Section */
+        .reservation {
+            padding: 5rem 2rem;
+            background: linear-gradient(rgba(43, 45, 66, 0.9), rgba(43, 45, 66, 0.9)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+            color: white;
+            position: relative;
+        }
+
+        .reservation-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .reservation-content {
+            flex: 1;
+        }
+
+        .reservation-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .reservation-content p {
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .reservation-features {
+            margin-bottom: 2rem;
+        }
+
+        .reservation-feature {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .reservation-feature i {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-right: 1rem;
+        }
+
+        .reservation-form {
+            flex: 1;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transform: perspective(1000px) rotateY(5deg);
+            transition: var(--transition);
+        }
+
+        .reservation-form:hover {
+            transform: perspective(1000px) rotateY(0deg);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 77, 109, 0.2);
+        }
+
+        .form-row {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+        }
+
+        .form-checkbox {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-checkbox input {
+            margin-right: 0.5rem;
+        }
+
+        .form-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            width: 100%;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .form-btn i {
+            margin-right: 8px;
+        }
+
+        .form-btn:hover {
+            background: var(--dark);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 77, 109, 0.4);
+        }
+
+        /* Delivery Section */
+        .delivery {
+            padding: 5rem 2rem;
+            background: var(--light);
+        }
+
+        .delivery-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .delivery-image {
+            flex: 1;
+            position: relative;
+        }
+
+        .delivery-img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .delivery-img:hover {
+            transform: scale(1.02);
+        }
+
+        .delivery-badge {
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            background: var(--primary);
+            color: white;
+            padding: 1rem;
+            border-radius: 50%;
+            font-weight: 700;
+            box-shadow: var(--shadow);
+            animation: pulse 2s infinite;
+        }
+
+        .delivery-content {
+            flex: 1;
+        }
+
+        .delivery-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+
+        .delivery-content p {
+            margin-bottom: 2rem;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .delivery-steps {
+            margin-bottom: 2rem;
+        }
+
+        .delivery-step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+
+        .delivery-step-number {
+            background: var(--primary);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+
+        .delivery-step-text h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .delivery-step-text p {
+            margin-bottom: 0;
+            color: #666;
+        }
+
+        .delivery-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .delivery-btn i {
+            margin-right: 8px;
+        }
+
+        .delivery-btn:hover {
+            background: var(--dark);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 77, 109, 0.4);
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 5rem 2rem;
+            background: white;
+        }
+
+        .testimonials-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonials-slider {
+            position: relative;
+            overflow: hidden;
+            margin-top: 3rem;
+        }
+
+        .testimonials-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .testimonial {
+            min-width: 100%;
+            padding: 0 1rem;
+            box-sizing: border-box;
+        }
+
+        .testimonial-card {
+            background: var(--light);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 5rem;
+            color: rgba(255, 77, 109, 0.1);
+            font-family: serif;
+            line-height: 1;
+        }
+
+        .testimonial-content {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            color: #555;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .testimonial-author-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 1rem;
+            border: 3px solid var(--primary);
+        }
+
+        .testimonial-author-info h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.2rem;
+            color: var(--dark);
+        }
+
+        .testimonial-author-info p {
+            color: var(--primary);
+            font-size: 0.9rem;
+        }
+
+        .testimonial-rating {
+            color: #ffc107;
+            margin-top: 0.5rem;
+        }
+
+        .slider-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            background: #ddd;
+            border-radius: 50%;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .slider-dot.active {
+            background: var(--primary);
+            transform: scale(1.2);
+        }
+
+        /* Gallery Section */
+        .gallery {
+            padding: 5rem 2rem;
+            background: var(--light);
+        }
+
+        .gallery-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            height: 250px;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .gallery-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover .gallery-img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 77, 109, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-icon {
+            color: white;
+            font-size: 2rem;
+        }
+
+        /* Login/Signup Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            overflow: hidden;
+            transform: translateY(-50px);
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+
+        .modal.active .modal-content {
+            transform: translateY(0);
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .modal-close:hover {
+            transform: rotate(90deg);
+        }
+
+        .modal-body {
+            padding: 2rem;
+        }
+
+        .auth-tabs {
+            display: flex;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .auth-tab {
+            padding: 0.8rem 1.5rem;
+            background: none;
+            border: none;
+            font-weight: 600;
+            color: #666;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .auth-tab.active {
+            color: var(--primary);
+        }
+
+        .auth-tab.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--primary);
+        }
+
+        .auth-form {
+            display: none;
+        }
+
+        .auth-form.active {
+            display: block;
+        }
+
+        .social-login {
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+
+        .social-login p {
+            color: #666;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .social-login p::before, .social-login p::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 30%;
+            height: 1px;
+            background: #ddd;
+        }
+
+        .social-login p::before {
+            left: 0;
+        }
+
+        .social-login p::after {
+            right: 0;
+        }
+
+        .social-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .social-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .social-btn.facebook {
+            background: #3b5998;
+        }
+
+        .social-btn.google {
+            background: #db4437;
+        }
+
+        .social-btn.twitter {
+            background: #1da1f2;
+        }
+
+        .social-btn:hover {
+            transform: translateY(-3px);
+        }
+
+        .form-footer {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        .form-footer a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .form-footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 4rem 2rem 2rem;
+            position: relative;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-col h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--primary);
+        }
+
+        .footer-col p {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+            color: #bbb;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: #bbb;
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-links a i {
+            margin-right: 8px;
+            font-size: 0.8rem;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: var(--transition);
+        }
+
+        .footer-social a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-newsletter input {
+            width: 100%;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .footer-newsletter button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            width: 100%;
+        }
+
+        .footer-newsletter button:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bbb;
+            font-size: 0.9rem;
+        }
+
+        .footer-bottom a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .footer-bottom a:hover {
+            text-decoration: underline;
+        }
+
+        /* Music Player */
+        .music-player {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: white;
+            border-radius: 50px;
+            padding: 0.8rem 1.2rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            z-index: 1000;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .music-player.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .music-info {
+            margin-right: 1rem;
+            max-width: 150px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .music-info p {
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        .music-info h4 {
+            font-size: 0.9rem;
+            color: var(--dark);
+        }
+
+        .music-controls {
+            display: flex;
+            align-items: center;
+        }
+
+        .music-btn {
+            background: none;
+            border: none;
+            color: var(--primary);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: var(--transition);
+            margin: 0 0.3rem;
+        }
+
+        .music-btn:hover {
+            transform: scale(1.2);
+        }
+
+        .music-progress {
+            width: 100px;
+            height: 4px;
+            background: #ddd;
+            border-radius: 2px;
+            margin: 0 0.5rem;
+            overflow: hidden;
+        }
+
+        .music-progress-bar {
+            height: 100%;
+            width: 0;
+            background: var(--primary);
+            transition: width 0.1s linear;
+        }
+
+        /* Scroll to Top */
+        .scroll-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 999;
+            box-shadow: 0 5px 15px rgba(255, 77, 109, 0.4);
+        }
+
+        .scroll-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            transform: translateY(-5px);
+            background: var(--secondary);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .about-content, .reservation-container, .delivery-container {
+                flex-direction: column;
+            }
+
+            .about-text {
+                padding-right: 0;
+                margin-bottom: 2rem;
+            }
+
+            .couple-special {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .couple-special-content {
+                padding-right: 0;
+                margin-bottom: 2rem;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            nav {
+                width: 100%;
+                margin-top: 1rem;
+                display: none;
+            }
+
+            nav.active {
+                display: block;
+            }
+
+            nav ul {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+
+            .nav-buttons {
+                width: 100%;
+                margin-top: 1rem;
+                display: none;
+            }
+
+            .nav-buttons.active {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .nav-button {
+                margin: 0.5rem 0;
+                width: 100%;
+            }
+
+            .hamburger {
+                display: block;
+                position: absolute;
+                top: 1rem;
+                right: 2rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .menu-items {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                margin-bottom: 1rem;
+            }
+
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+
+            .music-player {
+                bottom: 80px;
+                right: 10px;
+                padding: 0.6rem 1rem;
+            }
+
+            .music-info {
+                max-width: 120px;
+            }
+
+            .music-progress {
+                width: 60px;
+            }
+        }
+
+        /* Animations */
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes heartBeat {
+            0% {
+                transform: scale(1);
+            }
+            14% {
+                transform: scale(1.3);
+            }
+            28% {
+                transform: scale(1);
+            }
+            42% {
+                transform: scale(1.3);
+            }
+            70% {
+                transform: scale(1);
+            }
+        }
+
+        /* Custom Cursor */
+        .cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--primary);
+            mix-blend-mode: difference;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: transform 0.1s ease;
+        }
+
+        .cursor-follower {
+            position: fixed;
+            width: 40px;
+            height: 40px;
+            border: 2px solid var(--primary);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9998;
+            transform: translate(-50%, -50%);
+            transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <!-- Header -->
+    <header id="header">
+        <div class="header-container">
+            <div class="logo" onclick="window.location.href='#'">
+                <div class="logo-icon"></div>
+                <h1 class="logo-text">LoveBites Café</h1>
+            </div>
+            <button class="hamburger" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav id="nav">
+                <ul>
+                    <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="#about"><i class="fas fa-info-circle"></i> About</a></li>
+                    <li><a href="#menu"><i class="fas fa-utensils"></i> Menu</a></li>
+                    <li><a href="#specials"><i class="fas fa-star"></i> Specials</a></li>
+                    <li><a href="#reservation"><i class="fas fa-calendar-alt"></i> Reservation</a></li>
+                    <li><a href="#delivery"><i class="fas fa-motorcycle"></i> Delivery</a></li>
+                </ul>
+            </nav>
+            <div class="nav-buttons" id="navButtons">
+                <button class="nav-button" id="loginBtn"><i class="fas fa-sign-in-alt"></i> Login</button>
+                <button class="nav-button" id="signupBtn"><i class="fas fa-user-plus"></i> Sign Up</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="floating-hearts" id="floatingHearts"></div>
+        <div class="hero-content">
+            <h1>Where Love Meets Flavor</h1>
+            <p>Experience the perfect blend of romance and culinary delight at LoveBites Café. Our carefully crafted menu is designed to bring couples closer through shared moments and delicious food.</p>
+            <div class="hero-buttons">
+                <a href="#reservation" class="btn btn-primary"><i class="fas fa-heart"></i> Book a Romantic Table</a>
+                <a href="#delivery" class="btn btn-secondary"><i class="fas fa-motorcycle"></i> Order for Delivery</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="section-title">
+            <h2>Our Love Story</h2>
+        </div>
+        <div class="about-content">
+            <div class="about-text">
+                <h3>More Than Just a Café</h3>
+                <p>Founded in 2020, LoveBites Café was born from a simple idea: create a space where couples can connect over exceptional food in an atmosphere that celebrates love in all its forms.</p>
+                <p>Our chefs craft each dish with passion, using only the freshest ingredients to create memorable dining experiences. Whether it's a first date or a anniversary celebration, we're here to make your moments special.</p>
+                <p>At LoveBites, we believe that great food should be shared with someone special. That's why our menu features dishes designed for two, encouraging connection and creating memories.</p>
+            </div>
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Couple enjoying meal at LoveBites Café" class="about-img">
+                <div class="about-badge">
+                    <i class="fas fa-heart"></i> 1000+ Happy Couples
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="menu" id="menu">
+        <div class="section-title">
+            <h2>Our Love Menu</h2>
+        </div>
+        <div class="menu-container">
+            <div class="menu-tabs">
+                <button class="menu-tab active" data-category="all">All</button>
+                <button class="menu-tab" data-category="starters">Starters</button>
+                <button class="menu-tab" data-category="mains">Main Courses</button>
+                <button class="menu-tab" data-category="desserts">Desserts</button>
+                <button class="menu-tab" data-category="drinks">Drinks</button>
+            </div>
+            <div class="menu-items" id="menuItems">
+                <!-- Menu items will be loaded here via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Specials Section -->
+    <section class="specials" id="specials">
+        <div class="section-title">
+            <h2>Couple Specials</h2>
+        </div>
+        <div class="specials-container">
+            <div class="couple-special">
+                <div class="couple-special-content">
+                    <h3>Sweetheart's Platter</h3>
+                    <p>A perfect sharing experience featuring our most romantic dishes. Includes heart-shaped bruschetta, shared pasta with two forks, and a chocolate fondue dessert with seasonal fruits.</p>
+                    <span class="couple-special-price">$49.99</span>
+                    <button class="couple-special-btn"><i class="fas fa-heart"></i> Order Now</button>
+                </div>
+                <div class="couple-special-image">
+                    <img src="https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Sweetheart's Platter" class="couple-special-img">
+                </div>
+            </div>
+
+            <div class="love-meter">
+                <h3>Couple Compatibility Quiz</h3>
+                <p>Take our fun quiz to discover your perfect meal match based on your shared preferences!</p>
+                <div class="meter-container">
+                    <div class="meter-fill" id="meterFill"></div>
+                </div>
+                <div class="meter-result" id="meterResult"></div>
+                <button class="meter-btn" id="meterBtn">Start Quiz</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reservation Section -->
+    <section class="reservation" id="reservation">
+        <div class="section-title">
+            <h2>Book Your Romantic Table</h2>
+        </div>
+        <div class="reservation-container">
+            <div class="reservation-content">
+                <h2>Create Unforgettable Moments</h2>
+                <p>Reserve your table at LoveBites Café and let us take care of the rest. Whether it's a first date or a special anniversary, we'll make sure your experience is magical.</p>
+                <div class="reservation-features">
+                    <div class="reservation-feature">
+                        <i class="fas fa-heart"></i>
+                        <p>Romantic table decorations included</p>
+                    </div>
+                    <div class="reservation-feature">
+                        <i class="fas fa-camera"></i>
+                        <p>Complimentary couple photos</p>
+                    </div>
+                    <div class="reservation-feature">
+                        <i class="fas fa-wine-glass-alt"></i>
+                        <p>Special welcome drink for couples</p>
+                    </div>
+                </div>
+                <p>For special requests or events, please call us at <strong>(555) 123-4567</strong> or email <strong>reservations@lovebitescafe.com</strong></p>
+            </div>
+            <div class="reservation-form">
+                <form id="bookingForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="date">Date</label>
+                            <input type="date" id="date" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="time">Time</label>
+                            <input type="time" id="time" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="guests">Number of Guests</label>
+                            <input type="number" id="guests" class="form-control" min="1" max="10" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" class="form-control" required>
+                    </div>
+                    <div class="form-checkbox">
+                        <input type="checkbox" id="specialOccasion">
+                        <label for="specialOccasion">This is a special occasion (anniversary, birthday, etc.)</label>
+                    </div>
+                    <div class="form-group">
+                        <label for="requests">Special Requests</label>
+                        <textarea id="requests" class="form-control" rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="form-btn"><i class="fas fa-heart"></i> Book Now</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Delivery Section -->
+    <section class="delivery" id="delivery">
+        <div class="section-title">
+            <h2>Love Delivered</h2>
+        </div>
+        <div class="delivery-container">
+            <div class="delivery-image">
+                <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Food delivery" class="delivery-img">
+                <div class="delivery-badge">
+                    30 min<br>delivery
+                </div>
+            </div>
+            <div class="delivery-content">
+                <h2>Romantic Dining at Home</h2>
+                <p>Can't make it to the café? We'll bring the romance to you! Our special couple's delivery packages include everything you need to create a magical dining experience at home.</p>
+                <div class="delivery-steps">
+                    <div class="delivery-step">
+                        <div class="delivery-step-number">1</div>
+                        <div class="delivery-step-text">
+                            <h4>Choose Your Meal</h4>
+                            <p>Select from our specially designed couple's meals or build your own.</p>
+                        </div>
+                    </div>
+                    <div class="delivery-step">
+                        <div class="delivery-step-number">2</div>
+                        <div class="delivery-step-text">
+                            <h4>Add Romance Extras</h4>
+                            <p>Include candles, rose petals, or a love note to make it extra special.</p>
+                        </div>
+                    </div>
+                    <div class="delivery-step">
+                        <div class="delivery-step-number">3</div>
+                        <div class="delivery-step-text">
+                            <h4>Enjoy Together</h4>
+                            <p>We'll deliver everything ready to enjoy - just add love!</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="delivery-btn" id="deliveryBtn"><i class="fas fa-motorcycle"></i> Order Delivery Now</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="section-title">
+            <h2>Love Stories</h2>
+        </div>
+        <div class="testimonials-container">
+            <div class="testimonials-slider">
+                <div class="testimonials-track" id="testimonialsTrack">
+                    <div class="testimonial">
+                        <div class="testimonial-card">
+                            <div class="testimonial-content">
+                                "LoveBites Café made our first date absolutely magical. The food was incredible, and the romantic atmosphere helped break the ice. We've been coming back every month for our 'anniversary'!"
+                            </div>
+                            <div class="testimonial-author">
+                                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah J." class="testimonial-author-img">
+                                <div class="testimonial-author-info">
+                                    <h4>Sarah & Michael</h4>
+                                    <p>First Date</p>
+                                    <div class="testimonial-rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial">
+                        <div class="testimonial-card">
+                            <div class="testimonial-content">
+                                "We celebrated our 5th anniversary at LoveBites and it was perfect! The staff went above and beyond to make it special with rose petals on the table and a complimentary dessert. The Sweetheart's Platter is a must-try!"
+                            </div>
+                            <div class="testimonial-author">
+                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="David L." class="testimonial-author-img">
+                                <div class="testimonial-author-info">
+                                    <h4>David & Emily</h4>
+                                    <p>5th Anniversary</p>
+                                    <div class="testimonial-rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial">
+                        <div class="testimonial-card">
+                            <div class="testimonial-content">
+                                "The delivery service saved our date night when our babysitter canceled. The food arrived beautifully packaged with candles and everything we needed to create a romantic dinner at home. Highly recommend!"
+                            </div>
+                            <div class="testimonial-author">
+                                <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Jessica T." class="testimonial-author-img">
+                                <div class="testimonial-author-info">
+                                    <h4>Jessica & Ryan</h4>
+                                    <p>Parents Night Out</p>
+                                    <div class="testimonial-rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star-half-alt"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slider-nav" id="sliderNav">
+                <div class="slider-dot active"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery">
+        <div class="section-title">
+            <h2>Love in Every Bite</h2>
+        </div>
+        <div class="gallery-container">
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1480&q=80" alt="Romantic dinner" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-heart gallery-icon"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1681&q=80" alt="Delicious food" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-heart gallery-icon"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1484723091739-30a097e8f929?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1547&q=80" alt="Breakfast" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-heart gallery-icon"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1635&q=80" alt="Pasta" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-heart gallery-icon"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1505576399279-565b52d4ac71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1587&q=80" alt="Salad" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-heart gallery-icon"></i>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1627&q=80" alt="Dessert" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <i class="fas fa-heart gallery-icon"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>LoveBites Café</h3>
+                <p>Where every bite is filled with love and every moment creates memories. Join us for an unforgettable dining experience.</p>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
+                    <li><a href="#about"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                    <li><a href="#menu"><i class="fas fa-chevron-right"></i> Menu</a></li>
+                    <li><a href="#specials"><i class="fas fa-chevron-right"></i> Specials</a></li>
+                    <li><a href="#reservation"><i class="fas fa-chevron-right"></i> Reservations</a></li>
+                    <li><a href="#delivery"><i class="fas fa-chevron-right"></i> Delivery</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Opening Hours</h3>
+                <ul class="footer-links">
+                    <li><i class="fas fa-chevron-right"></i> Monday - Thursday: 11am - 10pm</li>
+                    <li><i class="fas fa-chevron-right"></i> Friday - Saturday: 11am - 11pm</li>
+                    <li><i class="fas fa-chevron-right"></i> Sunday: 10am - 9pm</li>
+                    <li><i class="fas fa-chevron-right"></i> Special holiday hours may apply</li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Newsletter</h3>
+                <p>Subscribe to our newsletter for exclusive couple offers, events, and more!</p>
+                <div class="footer-newsletter">
+                    <input type="email" placeholder="Your Email Address">
+                    <button type="submit">Subscribe</button>
+                </div>
+                <p style="margin-top: 1rem;"><i class="fas fa-phone"></i> (555) 123-4567</p>
+                <p><i class="fas fa-envelope"></i> hello@lovebitescafe.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> 123 Romance Ave, Lovetown</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 LoveBites Café. All Rights Reserved. <span style="color: var(--primary);">•</span> <a href="#">Privacy Policy</a> <span style="color: var(--primary);">•</span> <a href="#">Terms of Service</a></p>
+            <p style="margin-top: 0.5rem;">Designed by <a href="#" style="color: var(--neon-blue);">Shayan</a></p>
+        </div>
+    </footer>
+
+    <!-- Login/Signup Modal -->
+    <div class="modal" id="authModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Welcome to LoveBites</h2>
+                <button class="modal-close" id="modalClose">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="auth-tabs">
+                    <button class="auth-tab active" data-tab="login">Login</button>
+                    <button class="auth-tab" data-tab="signup">Sign Up</button>
+                </div>
+                <form class="auth-form active" id="loginForm">
+                    <div class="form-group">
+                        <label for="loginEmail">Email</label>
+                        <input type="email" id="loginEmail" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Password</label>
+                        <input type="password" id="loginPassword" class="form-control" required>
+                    </div>
+                    <button type="submit" class="form-btn"><i class="fas fa-sign-in-alt"></i> Login</button>
+                    <div class="social-login">
+                        <p>or login with</p>
+                        <div class="social-buttons">
+                            <button type="button" class="social-btn facebook"><i class="fab fa-facebook-f"></i></button>
+                            <button type="button" class="social-btn google"><i class="fab fa-google"></i></button>
+                            <button type="button" class="social-btn twitter"><i class="fab fa-twitter"></i></button>
+                        </div>
+                    </div>
+                    <div class="form-footer">
+                        <p>Don't have an account? <a href="#" id="showSignup">Sign up</a></p>
+                    </div>
+                </form>
+                <form class="auth-form" id="signupForm">
+                    <div class="form-group">
+                        <label for="signupName">Full Name</label>
+                        <input type="text" id="signupName" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signupEmail">Email</label>
+                        <input type="email" id="signupEmail" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signupPassword">Password</label>
+                        <input type="password" id="signupPassword" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signupConfirm">Confirm Password</label>
+                        <input type="password" id="signupConfirm" class="form-control" required>
+                    </div>
+                    <button type="submit" class="form-btn"><i class="fas fa-user-plus"></i> Sign Up</button>
+                    <div class="social-login">
+                        <p>or sign up with</p>
+                        <div class="social-buttons">
+                            <button type="button" class="social-btn facebook"><i class="fab fa-facebook-f"></i></button>
+                            <button type="button" class="social-btn google"><i class="fab fa-google"></i></button>
+                            <button type="button" class="social-btn twitter"><i class="fab fa-twitter"></i></button>
+                        </div>
+                    </div>
+                    <div class="form-footer">
+                        <p>Already have an account? <a href="#" id="showLogin">Login</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Music Player -->
+    <div class="music-player" id="musicPlayer">
+        <div class="music-info">
+            <p>Now Playing</p>
+            <h4>Romantic Dinner Jazz</h4>
+        </div>
+        <div class="music-controls">
+            <button class="music-btn" id="prevBtn"><i class="fas fa-step-backward"></i></button>
+            <button class="music-btn" id="playBtn"><i class="fas fa-play"></i></button>
+            <button class="music-btn" id="nextBtn"><i class="fas fa-step-forward"></i></button>
+            <div class="music-progress">
+                <div class="music-progress-bar" id="musicProgress"></div>
+            </div>
+            <button class="music-btn" id="volumeBtn"><i class="fas fa-volume-up"></i></button>
+        </div>
+    </div>
+
+    <!-- Scroll to Top -->
+    <div class="scroll-top" id="scrollTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Audio Element -->
+    <audio id="backgroundMusic" loop>
+        <source src="thoda thoda pyar.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        // Menu Data
+        const menuItems = [
+            {
+                id: 1,
+                title: "Heart-Shaped Bruschetta",
+                price: 8.99,
+                description: "Toasted bread topped with tomatoes, fresh basil, and mozzarella, cut into heart shapes.",
+                category: "starters",
+                image: "https://images.unsplash.com/photo-1572695157366-5e585ab2b69f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80",
+                note: "Couple Favorite"
+            },
+            {
+                id: 2,
+                title: "Love Potion Soup",
+                price: 7.99,
+                description: "Creamy tomato basil soup served with heart-shaped croutons. Perfect for sharing.",
+                category: "starters",
+                image: "https://images.unsplash.com/photo-1547592180-85f173990554?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+            },
+            {
+                id: 3,
+                title: "Kiss Me Calamari",
+                price: 10.99,
+                description: "Crispy fried calamari with a spicy aioli and sweet chili dipping sauce.",
+                category: "starters",
+                image: "https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+            },
+            {
+                id: 4,
+                title: "Two Hearts Pasta",
+                price: 18.99,
+                description: "Heart-shaped ravioli filled with ricotta and spinach in a creamy rose sauce.",
+                category: "mains",
+                image: "https://images.unsplash.com/photo-1555949258-eb67b1ef0ceb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+                note: "Best Seller"
+            },
+            {
+                id: 5,
+                title: "Romantic Ribeye",
+                price: 26.99,
+                description: "12oz ribeye steak with garlic mashed potatoes and seasonal vegetables.",
+                category: "mains",
+                image: "https://images.unsplash.com/photo-1588168333986-5078d3ae3976?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1587&q=80"
+            },
+            {
+                id: 6,
+                title: "Lovebird Chicken",
+                price: 16.99,
+                description: "Herb-roasted chicken breast with wild mushroom risotto and asparagus.",
+                category: "mains",
+                image: "https://images.unsplash.com/photo-1569058242253-92a9c755a0ec?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+            },
+            {
+                id: 7,
+                title: "Chocolate Fondue for Two",
+                price: 12.99,
+                description: "Rich melted chocolate served with fresh fruit, marshmallows, and pound cake.",
+                category: "desserts",
+                image: "https://images.unsplash.com/photo-1563805042-7684c019e1cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1627&q=80",
+                note: "Must Try"
+            },
+            {
+                id: 8,
+                title: "Shared Tiramisu",
+                price: 9.99,
+                description: "Classic Italian dessert with a romantic twist - served with two spoons.",
+                category: "desserts",
+                image: "https://images.unsplash.com/photo-1624353365286-3f8d62daad51?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+            },
+            {
+                id: 9,
+                title: "Strawberry Love Cake",
+                price: 8.99,
+                description: "Vanilla cake layered with fresh strawberries and whipped cream.",
+                category: "desserts",
+                image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1589&q=80"
+            },
+            {
+                id: 10,
+                title: "Love Potion Cocktail",
+                price: 9.99,
+                description: "A blend of vodka, raspberry liqueur, and champagne with edible glitter.",
+                category: "drinks",
+                image: "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+                note: "Signature Drink"
+            },
+            {
+                id: 11,
+                title: "Sweetheart Smoothie",
+                price: 6.99,
+                description: "Strawberry, banana, and mango smoothie with a heart-shaped strawberry garnish.",
+                category: "drinks",
+                image: "https://images.unsplash.com/photo-1505576399279-565b52d4ac71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1587&q=80"
+            },
+            {
+                id: 12,
+                title: "Cupid's Coffee",
+                price: 4.99,
+                description: "Latte art with a heart design, made with our special blend of coffee beans.",
+                category: "drinks",
+                image: "https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+            }
+        ];
+
+        // Quiz Questions
+        const quizQuestions = [
+            {
+                question: "What's your idea of the perfect date night?",
+                options: [
+                    "Fancy dinner with wine and candles",
+                    "Casual meal and a movie at home",
+                    "Adventure trying new cuisines together",
+                    "Whatever makes my partner happy"
+                ]
+            },
+            {
+                question: "How do you prefer to share food?",
+                options: [
+                    "One plate, two forks - romantic!",
+                    "Order different dishes and taste each other's",
+                    "I like my own food, but will share a bite",
+                    "We always get dishes meant for sharing"
+                ]
+            },
+            {
+                question: "What's your favorite flavor profile?",
+                options: [
+                    "Sweet and decadent",
+                    "Savory and rich",
+                    "Spicy and bold",
+                    "Light and fresh"
+                ]
+            },
+            {
+                question: "How adventurous are you with food?",
+                options: [
+                    "Very - love trying new things!",
+                    "Somewhat - will try most things once",
+                    "Not very - prefer familiar favorites",
+                    "Depends on my mood"
+                ]
+            }
+        ];
+
+        // Testimonials Data
+        const testimonials = [
+            {
+                content: "LoveBites Café made our first date absolutely magical. The food was incredible, and the romantic atmosphere helped break the ice. We've been coming back every month for our 'anniversary'!",
+                author: "Sarah & Michael",
+                occasion: "First Date",
+                rating: 5,
+                image: "https://randomuser.me/api/portraits/women/44.jpg"
+            },
+            {
+                content: "We celebrated our 5th anniversary at LoveBites and it was perfect! The staff went above and beyond to make it special with rose petals on the table and a complimentary dessert. The Sweetheart's Platter is a must-try!",
+                author: "David & Emily",
+                occasion: "5th Anniversary",
+                rating: 5,
+                image: "https://randomuser.me/api/portraits/men/32.jpg"
+            },
+            {
+                content: "The delivery service saved our date night when our babysitter canceled. The food arrived beautifully packaged with candles and everything we needed to create a romantic dinner at home. Highly recommend!",
+                author: "Jessica & Ryan",
+                occasion: "Parents Night Out",
+                rating: 4.5,
+                image: "https://randomuser.me/api/portraits/women/68.jpg"
+            },
+            {
+                content: "I proposed at LoveBites Café and they made it so special! They helped me plan everything, from hiding the ring in dessert to capturing the moment on camera. The staff felt like family by the end of the night.",
+                author: "Mark & Lisa",
+                occasion: "Engagement",
+                rating: 5,
+                image: "https://randomuser.me/api/portraits/men/75.jpg"
+            },
+            {
+                content: "As foodies, we appreciate the quality and creativity of the menu. Every dish we've tried has been exceptional, and the wine pairings are spot on. Our go-to spot for special occasions!",
+                author: "Alex & Taylor",
+                occasion: "Food Enthusiasts",
+                rating: 5,
+                image: "https://randomuser.me/api/portraits/women/63.jpg"
+            }
+        ];
+
+        // Music Playlist
+        const musicPlaylist = [
+            {
+                title: "humsafar",
+                artist: "akhil sachdeva",
+                src: "humsafar.mp3"
+            },
+            
+            {
+                title: "raabta",
+                artist: "arijit singh",
+                src: "raabta.mp3"
+            },
+            {
+                title: "tere sang yara",
+                artist: "atif aslam",
+                src: "tere sang yara.mp3"
+            }
+        ];
+
+        // DOM Elements
+        const hamburger = document.getElementById('hamburger');
+        const nav = document.getElementById('nav');
+        const navButtons = document.getElementById('navButtons');
+        const header = document.getElementById('header');
+        const menuTabs = document.querySelectorAll('.menu-tab');
+        const menuItemsContainer = document.getElementById('menuItems');
+        const meterBtn = document.getElementById('meterBtn');
+        const meterFill = document.getElementById('meterFill');
+        const meterResult = document.getElementById('meterResult');
+        const bookingForm = document.getElementById('bookingForm');
+        const deliveryBtn = document.getElementById('deliveryBtn');
+        const testimonialsTrack = document.getElementById('testimonialsTrack');
+        const sliderNav = document.getElementById('sliderNav');
+        const loginBtn = document.getElementById('loginBtn');
+        const signupBtn = document.getElementById('signupBtn');
+        const authModal = document.getElementById('authModal');
+        const modalClose = document.getElementById('modalClose');
+        const authTabs = document.querySelectorAll('.auth-tab');
+        const loginForm = document.getElementById('loginForm');
+        const signupForm = document.getElementById('signupForm');
+        const showLogin = document.getElementById('showLogin');
+        const showSignup = document.getElementById('showSignup');
+        const musicPlayer = document.getElementById('musicPlayer');
+        const playBtn = document.getElementById('playBtn');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const volumeBtn = document.getElementById('volumeBtn');
+        const musicProgress = document.getElementById('musicProgress');
+        const backgroundMusic = document.getElementById('backgroundMusic');
+        const scrollTop = document.getElementById('scrollTop');
+        const cursor = document.querySelector('.cursor');
+        const cursorFollower = document.querySelector('.cursor-follower');
+        const floatingHearts = document.getElementById('floatingHearts');
+
+        // Variables
+        let currentTestimonial = 0;
+        let currentMusic = 0;
+        let isPlaying = false;
+        let isMusicPlayerVisible = false;
+        let isDragging = false;
+        let startPos = 0;
+        let currentTranslate = 0;
+        let prevTranslate = 0;
+        let animationID;
+        let currentIndex = 0;
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load menu items
+            loadMenuItems('all');
+
+            // Create floating hearts
+            createHearts();
+
+            // Initialize testimonials slider
+            initTestimonials();
+
+            // Initialize music player
+            initMusicPlayer();
+
+            // Show music player after delay
+            setTimeout(() => {
+                musicPlayer.classList.add('active');
+                isMusicPlayerVisible = true;
+            }, 5000);
+
+            // Set current year in footer
+            document.querySelector('.footer-bottom p:first-child').innerHTML = `&copy; ${new Date().getFullYear()} LoveBites Café. All Rights Reserved. <span style="color: var(--primary);">•</span> <a href="#">Privacy Policy</a> <span style="color: var(--primary);">•</span> <a href="#">Terms of Service</a>`;
+        });
+
+        // Event Listeners
+        hamburger.addEventListener('click', toggleMenu);
+        window.addEventListener('scroll', handleScroll);
+        menuTabs.forEach(tab => tab.addEventListener('click', handleMenuTabClick));
+        meterBtn.addEventListener('click', startLoveMeterQuiz);
+        bookingForm.addEventListener('submit', handleBookingSubmit);
+        deliveryBtn.addEventListener('click', handleDeliveryClick);
+        loginBtn.addEventListener('click', () => showAuthModal('login'));
+        signupBtn.addEventListener('click', () => showAuthModal('signup'));
+        modalClose.addEventListener('click', closeAuthModal);
+        authTabs.forEach(tab => tab.addEventListener('click', handleAuthTabClick));
+        showLogin.addEventListener('click', (e) => {
+            e.preventDefault();
+            showAuthTab('login');
+        });
+        showSignup.addEventListener('click', (e) => {
+            e.preventDefault();
+            showAuthTab('signup');
+        });
+        playBtn.addEventListener('click', togglePlay);
+        prevBtn.addEventListener('click', playPrevious);
+        nextBtn.addEventListener('click', playNext);
+        volumeBtn.addEventListener('click', toggleMute);
+        backgroundMusic.addEventListener('timeupdate', updateProgressBar);
+        backgroundMusic.addEventListener('ended', playNext);
+        scrollTop.addEventListener('click', scrollToTop);
+        window.addEventListener('mousemove', handleCursorMove);
+        document.addEventListener('mousedown', () => {
+            cursor.style.transform = 'translate(-50%, -50%) scale(0.7)';
+            cursorFollower.style.transform = 'translate(-50%, -50%) scale(0.8)';
+        });
+        document.addEventListener('mouseup', () => {
+            cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+            cursorFollower.style.transform = 'translate(-50%, -50%) scale(1)';
+        });
+
+        // Testimonial slider touch events
+        testimonialsTrack.addEventListener('mousedown', dragStart);
+        testimonialsTrack.addEventListener('touchstart', dragStart);
+        testimonialsTrack.addEventListener('mouseup', dragEnd);
+        testimonialsTrack.addEventListener('touchend', dragEnd);
+        testimonialsTrack.addEventListener('mouseleave', dragEnd);
+        testimonialsTrack.addEventListener('mousemove', drag);
+        testimonialsTrack.addEventListener('touchmove', drag);
+
+        // Functions
+        function toggleMenu() {
+            nav.classList.toggle('active');
+            navButtons.classList.toggle('active');
+            hamburger.innerHTML = nav.classList.contains('active') ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        }
+
+        function handleScroll() {
+            // Header scroll effect
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+
+            // Scroll to top button
+            if (window.scrollY > 300) {
+                scrollTop.classList.add('active');
+            } else {
+                scrollTop.classList.remove('active');
+            }
+
+            // Animate menu items on scroll
+            const menuItems = document.querySelectorAll('.menu-item');
+            menuItems.forEach((item, index) => {
+                const itemTop = item.getBoundingClientRect().top;
+                if (itemTop < window.innerHeight - 100) {
+                    setTimeout(() => {
+                        item.classList.add('animate');
+                    }, index * 100);
+                }
+            });
+        }
+
+        function loadMenuItems(category) {
+            menuItemsContainer.innerHTML = '';
+            
+            const filteredItems = category === 'all' 
+                ? menuItems 
+                : menuItems.filter(item => item.category === category);
+            
+            filteredItems.forEach(item => {
+                const menuItem = document.createElement('div');
+                menuItem.className = 'menu-item';
+                menuItem.dataset.category = item.category;
+                
+                let noteBadge = '';
+                if (item.note) {
+                    noteBadge = `<div class="menu-item-note">${item.note}</div>`;
+                }
+                
+                menuItem.innerHTML = `
+                    ${noteBadge}
+                    <img src="${item.image}" alt="${item.title}" class="menu-item-img">
+                    <div class="menu-item-content">
+                        <div class="menu-item-header">
+                            <h3 class="menu-item-title">${item.title}</h3>
+                            <span class="menu-item-price">$${item.price.toFixed(2)}</span>
+                        </div>
+                        <p class="menu-item-desc">${item.description}</p>
+                        <div class="menu-item-footer">
+                            <button class="menu-item-love"><i class="far fa-heart"></i></button>
+                            <button class="menu-item-btn"><i class="fas fa-plus"></i> Add to Order</button>
+                        </div>
+                    </div>
+                `;
+                
+                menuItemsContainer.appendChild(menuItem);
+            });
+
+            // Add event listeners to love buttons
+            document.querySelectorAll('.menu-item-love').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                    this.innerHTML = this.classList.contains('active') 
+                        ? '<i class="fas fa-heart"></i>' 
+                        : '<i class="far fa-heart"></i>';
+                    
+                    // Heart beat animation
+                    if (this.classList.contains('active')) {
+                        this.style.animation = 'heartBeat 1s';
+                        setTimeout(() => {
+                            this.style.animation = '';
+                        }, 1000);
+                    }
+                });
+            });
+
+            // Add event listeners to add to order buttons
+            document.querySelectorAll('.menu-item-btn').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const menuItem = this.closest('.menu-item');
+                    const itemName = menuItem.querySelector('.menu-item-title').textContent;
+                    
+                    // Button animation
+                    this.style.transform = 'scale(0.9)';
+                    this.style.backgroundColor = 'var(--dark)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                        this.style.backgroundColor = '';
+                    }, 200);
+                    
+                    // Show notification
+                    showNotification(`${itemName} added to your order!`);
+                });
+            });
+        }
+
+        function handleMenuTabClick(e) {
+            // Update active tab
+            menuTabs.forEach(tab => tab.classList.remove('active'));
+            this.classList.add('active');
+            
+            // Load items for selected category
+            const category = this.dataset.category;
+            loadMenuItems(category);
+        }
+
+        function createHearts() {
+            // Create floating hearts
+            for (let i = 0; i < 15; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.style.left = `${Math.random() * 100}%`;
+                heart.style.top = `${Math.random() * 100}%`;
+                heart.style.opacity = Math.random();
+                heart.style.transform = `rotate(45deg) scale(${Math.random() * 0.5 + 0.5})`;
+                heart.style.animationDuration = `${Math.random() * 15 + 10}s`;
+                heart.style.animationDelay = `${Math.random() * 5}s`;
+                floatingHearts.appendChild(heart);
+            }
+        }
+
+        function startLoveMeterQuiz() {
+            meterBtn.disabled = true;
+            meterBtn.textContent = 'Calculating...';
+            
+            // Simulate quiz progress
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += Math.random() * 10;
+                meterFill.style.width = `${Math.min(progress, 100)}%`;
+                
+                if (progress >= 100) {
+                    clearInterval(interval);
+                    showQuizResult();
+                }
+            }, 200);
+        }
+
+        function showQuizResult() {
+            const results = [
+                "Perfect Match! Try our Sweetheart's Platter - designed for couples who share everything!",
+                "Great Connection! You'll love our Two Hearts Pasta - a romantic dish for two.",
+                "Good Compatibility! Start with our Heart-Shaped Bruschetta to set the mood.",
+                "Interesting Pair! Our Love Potion Cocktail will help you find common ground."
+            ];
+            
+            const randomResult = results[Math.floor(Math.random() * results.length)];
+            
+            meterResult.textContent = randomResult;
+            meterResult.style.opacity = '1';
+            meterBtn.textContent = 'Try Again';
+            meterBtn.disabled = false;
+            
+            meterBtn.addEventListener('click', resetQuiz, { once: true });
+        }
+
+        function resetQuiz() {
+            meterFill.style.width = '0';
+            meterResult.style.opacity = '0';
+            meterResult.textContent = '';
+            meterBtn.textContent = 'Start Quiz';
+            
+            // Remove the event listener we added
+            meterBtn.removeEventListener('click', resetQuiz);
+            
+            // Re-add the original click handler
+            meterBtn.addEventListener('click', startLoveMeterQuiz);
+        }
+
+        function initTestimonials() {
+            // Set testimonials track width
+            testimonialsTrack.style.width = `${testimonials.length * 100}%`;
+            
+            // Create dots for navigation
+            testimonials.forEach((_, index) => {
+                const dot = document.createElement('div');
+                dot.className = 'slider-dot';
+                if (index === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => goToTestimonial(index));
+                sliderNav.appendChild(dot);
+            });
+        }
+
+        function goToTestimonial(index) {
+            currentTestimonial = index;
+            updateTestimonialPosition();
+            updateDots();
+        }
+
+        function updateTestimonialPosition() {
+            testimonialsTrack.style.transform = `translateX(-${currentTestimonial * 100}%)`;
+        }
+
+        function updateDots() {
+            document.querySelectorAll('.slider-dot').forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentTestimonial);
+            });
+        }
+
+        function dragStart(e) {
+            if (e.type === 'touchstart') {
+                startPos = e.touches[0].clientX;
+            } else {
+                startPos = e.clientX;
+                e.preventDefault();
+            }
+            
+            isDragging = true;
+            testimonialsTrack.style.transition = 'none';
+            animationID = requestAnimationFrame(animation);
+        }
+
+        function drag(e) {
+            if (isDragging) {
+                const currentPosition = e.type === 'touchmove' ? e.touches[0].clientX : e.clientX;
+                currentTranslate = prevTranslate + currentPosition - startPos;
+            }
+        }
+
+        function dragEnd() {
+            if (isDragging) {
+                isDragging = false;
+                cancelAnimationFrame(animationID);
+                
+                const movedBy = currentTranslate - prevTranslate;
+                
+                if (movedBy < -50 && currentTestimonial < testimonials.length - 1) {
+                    currentTestimonial++;
+                }
+                
+                if (movedBy > 50 && currentTestimonial > 0) {
+                    currentTestimonial--;
+                }
+                
+                setPositionByIndex();
+            }
+        }
+
+        function setPositionByIndex() {
+            currentTranslate = currentTestimonial * -window.innerWidth;
+            prevTranslate = currentTranslate;
+            testimonialsTrack.style.transform = `translateX(${currentTranslate}px)`;
+            testimonialsTrack.style.transition = 'transform 0.5s ease';
+            updateDots();
+        }
+
+        function animation() {
+            testimonialsTrack.style.transform = `translateX(${currentTranslate}px)`;
+            animationID = requestAnimationFrame(animation);
+        }
+
+        function handleBookingSubmit(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const date = document.getElementById('date').value;
+            const time = document.getElementById('time').value;
+            const guests = document.getElementById('guests').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const specialOccasion = document.getElementById('specialOccasion').checked;
+            const requests = document.getElementById('requests').value;
+            
+            // Here you would normally send this data to a server
+            console.log('Booking submitted:', { name, date, time, guests, email, phone, specialOccasion, requests });
+            
+            // Show success message
+            showNotification(`Table booked successfully for ${name}! We'll see you on ${date} at ${time}.`);
+            
+            // Reset form
+            bookingForm.reset();
+        }
+
+        function handleDeliveryClick() {
+            showNotification("Delivery ordering coming soon! For now, please call us at (555) 123-4567 to place your order.");
+        }
+
+        function showNotification(message) {
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.className = 'notification';
+            notification.textContent = message;
+            notification.style.position = 'fixed';
+            notification.style.bottom = '20px';
+            notification.style.left = '50%';
+            notification.style.transform = 'translateX(-50%)';
+            notification.style.backgroundColor = 'var(--primary)';
+            notification.style.color = 'white';
+            notification.style.padding = '15px 25px';
+            notification.style.borderRadius = '50px';
+            notification.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.2)';
+            notification.style.zIndex = '10000';
+            notification.style.animation = 'fadeInUp 0.3s forwards';
+            
+            document.body.appendChild(notification);
+            
+            // Remove notification after delay
+            setTimeout(() => {
+                notification.style.animation = 'fadeOutDown 0.3s forwards';
+                setTimeout(() => {
+                    notification.remove();
+                }, 300);
+            }, 3000);
+        }
+
+        function showAuthModal(tab) {
+            authModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            showAuthTab(tab);
+        }
+
+        function closeAuthModal() {
+            authModal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function handleAuthTabClick() {
+            authTabs.forEach(tab => tab.classList.remove('active'));
+            this.classList.add('active');
+            
+            const tab = this.dataset.tab;
+            showAuthTab(tab);
+        }
+
+        function showAuthTab(tab) {
+            document.querySelectorAll('.auth-form').forEach(form => form.classList.remove('active'));
+            document.getElementById(`${tab}Form`).classList.add('active');
+            
+            authTabs.forEach(t => t.classList.remove('active'));
+            document.querySelector(`.auth-tab[data-tab="${tab}"]`).classList.add('active');
+        }
+
+        function initMusicPlayer() {
+            // Load first song
+            loadMusic(currentMusic);
+            
+            // Set music volume to 50%
+            backgroundMusic.volume = 0.5;
+        }
+
+        function loadMusic(index) {
+            const song = musicPlaylist[index];
+            backgroundMusic.src = song.src;
+            document.querySelector('.music-info h4').textContent = song.title;
+            document.querySelector('.music-info p').textContent = song.artist;
+            
+            if (isPlaying) {
+                backgroundMusic.play();
+            }
+        }
+
+        function togglePlay() {
+            if (isPlaying) {
+                pauseMusic();
+            } else {
+                playMusic();
+            }
+        }
+
+        function playMusic() {
+            backgroundMusic.play();
+            isPlaying = true;
+            playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+        }
+
+        function pauseMusic() {
+            backgroundMusic.pause();
+            isPlaying = false;
+            playBtn.innerHTML = '<i class="fas fa-play"></i>';
+        }
+
+        function playPrevious() {
+            currentMusic = (currentMusic - 1 + musicPlaylist.length) % musicPlaylist.length;
+            loadMusic(currentMusic);
+            if (!isPlaying) playMusic();
+        }
+
+        function playNext() {
+            currentMusic = (currentMusic + 1) % musicPlaylist.length;
+            loadMusic(currentMusic);
+            if (!isPlaying) playMusic();
+        }
+
+        function toggleMute() {
+            backgroundMusic.muted = !backgroundMusic.muted;
+            volumeBtn.innerHTML = backgroundMusic.muted 
+                ? '<i class="fas fa-volume-mute"></i>' 
+                : '<i class="fas fa-volume-up"></i>';
+        }
+
+        function updateProgressBar() {
+            const { duration, currentTime } = backgroundMusic;
+            const progressPercent = (currentTime / duration) * 100;
+            musicProgress.style.width = `${progressPercent}%`;
+        }
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        function handleCursorMove(e) {
+            // Update cursor position
+            cursor.style.left = `${e.clientX}px`;
+            cursor.style.top = `${e.clientY}px`;
+            
+            // Update follower with delay
+            setTimeout(() => {
+                cursorFollower.style.left = `${e.clientX}px`;
+                cursorFollower.style.top = `${e.clientY}px`;
+            }, 100);
+            
+            // Scale follower when hovering interactive elements
+            const interactiveElements = ['A', 'BUTTON', 'INPUT', 'TEXTAREA', 'SELECT'];
+            if (interactiveElements.includes(e.target.tagName)) {
+                cursorFollower.style.width = '30px';
+                cursorFollower.style.height = '30px';
+            } else {
+                cursorFollower.style.width = '40px';
+                cursorFollower.style.height = '40px';
+            }
+        }
+
+        // Close modal when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target === authModal) {
+                closeAuthModal();
+            }
+        });
+
+        // Prevent form submission (for demo purposes)
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            showNotification('Login functionality coming soon!');
+            closeAuthModal();
+        });
+
+        signupForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            showNotification('Sign up functionality coming soon!');
+            closeAuthModal();
+        });
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            // Space to play/pause music
+            if (e.code === 'Space' && isMusicPlayerVisible) {
+                e.preventDefault();
+                togglePlay();
+            }
+            
+            // Right arrow for next song
+            if (e.code === 'ArrowRight') {
+                playNext();
+            }
+            
+            // Left arrow for previous song
+            if (e.code === 'ArrowLeft') {
+                playPrevious();
+            }
+            
+            // M to mute/unmute
+            if (e.code === 'KeyM') {
+                toggleMute();
+            }
+        });
+
+        // Add animation to all buttons on hover
+        document.querySelectorAll('button, a.btn').forEach(button => {
+            button.addEventListener('mouseenter', () => {
+                button.style.transform = 'translateY(-3px)';
+                button.style.boxShadow = '0 7px 15px rgba(0, 0, 0, 0.2)';
+            });
+            
+            button.addEventListener('mouseleave', () => {
+                button.style.transform = '';
+                button.style.boxShadow = '';
+            });
+        });
+
+        // Add animation to menu items on hover
+        document.querySelectorAll('.menu-item').forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                item.style.transform = 'translateY(-5px)';
+                item.style.boxShadow = '0 10px 25px rgba(0, 0, 0, 0.15)';
+            });
+            
+            item.addEventListener('mouseleave', () => {
+                if (!item.classList.contains('animate')) {
+                    item.style.transform = 'translateY(20px)';
+                } else {
+                    item.style.transform = '';
+                }
+                item.style.boxShadow = '';
+            });
+        });
+
+        // Add animation to gallery items on hover
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                item.querySelector('.gallery-img').style.transform = 'scale(1.1)';
+                item.querySelector('.gallery-overlay').style.opacity = '1';
+            });
+            
+            item.addEventListener('mouseleave', () => {
+                item.querySelector('.gallery-img').style.transform = '';
+                item.querySelector('.gallery-overlay').style.opacity = '0';
+            });
+        });
+
+        // Initialize animations on scroll
+        handleScroll();
+        window.addEventListener('scroll', handleScroll);
+    </script>
+</body>
+</html>
